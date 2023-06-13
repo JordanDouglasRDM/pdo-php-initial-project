@@ -1,6 +1,8 @@
 <?php
-$databasePath = __DIR__ . '/banco.sqlite';
-$pdo = new PDO('sqlite:' . $databasePath);
+
+use Alura\Pdo\infrastructure\Persistence\ConnectionCreator;
+
+$pdo = ConnectionCreator::createConnection();
 
 $sqlDelete = 'DELETE FROM students WHERE id = ?;';
 $prepareStatement = $pdo->prepare($sqlDelete);
